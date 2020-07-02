@@ -23,6 +23,19 @@ Book::Book(std::string title,
       field_{field},
       available_{available} {}
 
+
+    void Book::setAvailableStatus() {
+        if (getAvailable()) {
+            std::cout<<"Renting a book\n";
+            available_ = false;
+        } else {
+            std::cout<<"Returning a book\n";
+            available_ = true;
+        }
+    }
+
+
+
 std::ostream& operator<<(std::ostream& os, const Book& b) {
     //|Title | ISBN | Author | Publisher | Published Year | Edition | Page Numbers | Field | Available |
     os << '|' << b.getTitle() << std::setw(14) << '|'

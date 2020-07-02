@@ -36,6 +36,8 @@ public:
     Field getField() const { return field_; }
     bool getAvailable() const { return available_; }
 
+    void setAvailableStatus();
+
 private:
     std::string title_;
     std::string isbn_;
