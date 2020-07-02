@@ -2,6 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <map>
 
 Book::Book(std::string title,
            std::string isbn,
@@ -31,7 +32,20 @@ std::ostream& operator<<(std::ostream& os, const Book& b) {
        << b.getPublishedYear() << std::setw(6) << '|'
        << b.getEdition() << std::setw(2) << '|'
        << b.getPageNumbers() << std::setw(4) << '|'
-       << b.getField() << std::setw(4) << '|'
+       << getFieldName(b.getField()) << std::setw(4) << '|'
        << std::boolalpha << b.getAvailable() << std::setw(4) << '|';
     return os;
+}
+
+std::string getFieldName(const Book::Field& field) {
+    std::map<Book::Field, std::string> fieldNames{
+        {Book::Field::laboratoryManual, "laboratoryManual"},
+        {Book::Field::coursebook, "coursebook"},
+        {Book::Field::examsbook, "examsbook"},
+        {Book::Field::computerScience, "computerScience"},
+        {Book::Field::algorithms, "algorithms"},
+        {Book::Field::dataScience, "dataScience"},
+        {Book::Field::programming, "programming"}};
+
+    return fieldNames[field];
 }

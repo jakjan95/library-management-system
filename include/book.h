@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 
 class Book {
@@ -48,3 +49,5 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const Book& b);
+
+std::string getFieldName(const Book::Field& field);
